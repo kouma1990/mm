@@ -1,11 +1,6 @@
 @extends('layout')
 
 @section('content')
-    <h1>Maste</h1>
-
-    <hr/>
-
-    {!! link_to('mastes/create', 'New maste', ['class' => 'btn btn-info']) !!}
 
     @foreach($mastes as $maste)
         <article>
