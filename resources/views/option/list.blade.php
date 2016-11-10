@@ -26,7 +26,7 @@
 {!! Form::open(['url' => $url, 'files' => true,  "class"=>"form-inline"]) !!}
     <div class="form-group">
         {!! Form::label('name', 'New '.$title.":") !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        <input class="form-control" name="name" type="text" value="" id="name">
     </div>
 
     <div class="form-group">

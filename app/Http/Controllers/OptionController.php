@@ -12,6 +12,11 @@ use App\Models\Printer;
 use App\Models\Country;
 use App\Models\Repository;
 
+use App\Http\Requests\DesignerRequest;
+use App\Http\Requests\PrinterRequest;
+use App\Http\Requests\CountryRequest;
+use App\Http\Requests\RepositoryRequest;
+
 class OptionController extends Controller
 {
     public function index()
@@ -24,24 +29,28 @@ class OptionController extends Controller
         return view('option.index', compact("designers", "printers", "countries", "repositories"));
     }
 
-    public function createDesigner()
+    public function storeDesigner(DesignerRequest $request)
     {
-        return 0;
+        Designer::create($request->all());
+        return redirect('option');
     }
 
-    public function createPrinter()
+    public function storePrinter(PrinterRequest $request)
     {
-        return 0;
+        Printer::create($request->all());
+        return redirect('option');
     }
 
-    public function createCountry()
+    public function storeCountry(CountryRequest $request)
     {
-        return 0;
+        Country::create($request->all());
+        return redirect('option');
     }
 
-    public function createRepository()
+    public function storeRepository(RepositoryRequest $request)
     {
-        return 0;
+        Repository::create($request->all());
+        return redirect('option');
     }
 
 

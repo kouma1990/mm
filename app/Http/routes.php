@@ -21,10 +21,10 @@ Route::get('test', 'TestController@index');
 
 // option 画面
 Route::get("option", "OptionController@index");
-Route::post("designer", "OptionController@createDesigner");
-Route::post("printer", "OptionController@createPrinter");
-Route::post("repository", "OptionController@createRepository");
-Route::post("country", "OptionController@createCountry");
+Route::post("designer", "OptionController@storeDesigner");
+Route::post("printer", "OptionController@storePrinter");
+Route::post("repository", "OptionController@storeRepository");
+Route::post("country", "OptionController@storeCountry");
 
 
 /*
