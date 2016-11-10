@@ -18,6 +18,15 @@ Route::get('/', function () {
 Route::resource('mastes', 'MastesController');
 
 Route::get('test', 'TestController@index');
+
+// option 画面
+Route::get("option", "OptionController@index");
+Route::post("designer", "OptionController@createDesigner");
+Route::post("printer", "OptionController@createPrinter");
+Route::post("repository", "OptionController@createRepository");
+Route::post("country", "OptionController@createCountry");
+
+
 /*
 Route::get('mastes', 'MastesController@index');
 Route::get('mastes/create', 'MastesController@create');

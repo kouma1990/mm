@@ -18,11 +18,6 @@ use App\Http\Requests\MasteRequest;
 
 class MastesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //$mastes = Maste::all();
@@ -30,11 +25,6 @@ class MastesController extends Controller
         return view('mastes.index', compact('mastes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $designers = Designer::lists("name","id");
@@ -45,27 +35,14 @@ class MastesController extends Controller
         return view('mastes.create', compact('designers', 'printers', 'countries', 'repositories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(MasteRequest $request)
     {
-        Maste::create($request->all());
-        var_dump($request->file('image'));
-        //var_dump($request->all());
+        $maste = Maste::create($request->all());
+        $file_name = "images/" . $maste->id . ".png";
         Storage::put('images/text.png', file_get_contents($request->file('image')));
-        //return redirect('mastes');
+        return redirect('mastes');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $maste = Maste::findOrFail($id);
@@ -74,12 +51,6 @@ class MastesController extends Controller
         return view('mastes.show', compact('maste', 'image'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $designers = Designer::lists("name","id");
@@ -90,13 +61,6 @@ class MastesController extends Controller
         return view('mastes.edit', compact('maste', 'designers', 'printers', 'countries', 'repositories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(MasteRequest $request, $id)
     {
         $maste = Maste::findOrFail($id);
@@ -104,12 +68,6 @@ class MastesController extends Controller
         return redirect(url('mastes', [$maste->id]));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $maste = Maste::findOrFail($id);

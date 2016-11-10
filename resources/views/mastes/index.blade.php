@@ -1,17 +1,20 @@
 @extends('layout')
 
 @section('content')
-
-    @foreach($mastes as $maste)
-        <article>
-            <h2>
-                <a href="{{ url('mastes', $maste->id) }}">
-                    {{ $maste->title }}
-                </a>
-            </h2>
-            <div class="body">
-                {{ $maste->note }}
-            </div>
-        </article>
-    @endforeach
+    <table class="table">
+    	<thead>
+    		<tr>
+                <th>Title</th>
+                <th>note</th>
+            </tr>
+    	</thead>
+    	<tbody>
+        @foreach($mastes as $maste)
+            <tr>
+                <td><h3><a href="{{ url('mastes', $maste->id) }}">{{ $maste->title }}</a></h3></td>
+                <td>{{ $maste->note }}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 @endsection

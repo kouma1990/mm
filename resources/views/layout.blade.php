@@ -20,6 +20,7 @@
         				<li><a href="{{ url("mastes") }}">list</a></li>
         				<li><a href="#">icon</a></li>
         				<li><a href="{{ url("mastes/create") }}">new</a></li>
+                        <li><a href="{{ url("option") }}">option</a></li>
         			</ul>
         		</div>
         	</div>
