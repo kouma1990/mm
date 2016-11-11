@@ -25,6 +25,14 @@ Route::post("designer", "OptionController@storeDesigner");
 Route::post("printer", "OptionController@storePrinter");
 Route::post("repository", "OptionController@storeRepository");
 Route::post("country", "OptionController@storeCountry");
+Route::delete("designer/{id}", "OptionController@destoryDesigner");
+Route::delete("printer/{id}", "OptionController@destoryPrinter");
+Route::delete("repository/{id}", "OptionController@destoryRepository");
+Route::delete("country/{id}", "OptionController@destoryCountry");
+Route::patch("designer/{id}", "OptionController@updateDesigner");
+Route::patch("printer/{id}", "OptionController@updatePrinter");
+Route::patch("repository/{id}", "OptionController@updateRepository");
+Route::patch("country/{id}", "OptionController@updateCountry");
 
 
 /*

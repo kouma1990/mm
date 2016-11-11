@@ -29,6 +29,9 @@ class OptionController extends Controller
         return view('option.index', compact("designers", "printers", "countries", "repositories"));
     }
 
+    /*
+    * 新規作成
+    */
     public function storeDesigner(DesignerRequest $request)
     {
         Designer::create($request->all());
@@ -51,6 +54,64 @@ class OptionController extends Controller
     {
         Repository::create($request->all());
         return redirect('option');
+    }
+
+    /*
+    * 更新
+    */
+    public function updateDesigner(DesignerRequest $request, $id)
+    {
+        $disigner = Designer::findOrFail($id);
+        $disigner->update($request->all());
+        return redirect('option');
+    }
+
+    public function updatePrinter(PrinterRequest $request, $id)
+    {
+        $printer = Printer::findOrFail($id);
+        $printer->update($request->all());
+        return redirect('option');
+    }
+
+    public function updateCountry(CountryRequest $request, $id)
+    {
+        $country = Country::findOrFail($id);
+        $country->update($request->all());
+        return redirect('option');
+    }
+
+    public function updateRepository(RepositoryRequest $request, $id)
+    {
+        $repository = Repository::findOrFail($id);
+        $repository->update($request->all());
+        return redirect('option');
+    }
+
+    /*
+    * 削除
+    */
+    public function destoryDesigner($id)
+    {
+        Designer::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function destoryPrinter($id)
+    {
+        Printer::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function destoryCountry($id)
+    {
+        Country::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function destoryRepository($id)
+    {
+        Repository::find($id)->delete();
+        return redirect()->back();
     }
 
 

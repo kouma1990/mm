@@ -15,9 +15,15 @@
         @foreach($datas as $data)
             <tr>
                 <td>{{$data->id}}</td>
-                <td>{{$data->name}}</td>
-                <td>edit</td>
-                <td>delete</td>
+                {!! Form::open(['method' => 'PATCH', 'url' => [$url, $data->id]]) !!}
+                    <td><input class="form-control" name="name" type="text" value="{{$data->name}}" id="name"></td>
+                    <td>{!! Form::submit('edit', ['class' => 'btn btn-success']) !!}</td>
+                {!! Form::close() !!}
+                <td>
+                    {!! Form::open(['method' => 'DELETE', 'url' => [$url, $data->id]]) !!}
+                        {!! Form::submit('delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                </td>
             </tr>
         @endforeach
     </tbody>
