@@ -11,7 +11,6 @@
 
     <div class="tab-content">
         <div class="tab-pane active" id="Designer">
-            aa
             @include("option.list", ["title"=>"Designer", "datas"=>$designers, "url"=>"designer"])
         </div>
         <div class="tab-pane" id="Printer">
