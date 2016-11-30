@@ -32,86 +32,88 @@ class OptionController extends Controller
     /*
     * 新規作成
     */
+    private function storeModel($request, $Model)
+    {
+        $Model::create($request->all());
+        return redirect('option');
+    }
+
     public function storeDesigner(DesignerRequest $request)
     {
-        Designer::create($request->all());
-        return redirect('option');
+        return $this->storeModel($request, "App\Models\Designer");
     }
 
     public function storePrinter(PrinterRequest $request)
     {
-        Printer::create($request->all());
-        return redirect('option');
+        return $this->storeModel($request, "App\Models\Printer");
     }
 
     public function storeCountry(CountryRequest $request)
     {
-        Country::create($request->all());
-        return redirect('option');
+        return $this->storeModel($request, "App\Models\Country");
     }
 
     public function storeRepository(RepositoryRequest $request)
     {
-        Repository::create($request->all());
-        return redirect('option');
+        return $this->storeModel($request, "App\Models\Repository");
     }
 
     /*
     * 更新
     */
+    private function updateModel($request, $id, $Model)
+    {
+        $model = $Model::findOrFail($id);
+        $model->update($request->all());
+        return redirect('option');
+    }
+
     public function updateDesigner(DesignerRequest $request, $id)
     {
-        $disigner = Designer::findOrFail($id);
-        $disigner->update($request->all());
-        return redirect('option');
+        return $this->updateModel($request, $id, "App\Models\Designer");
     }
 
     public function updatePrinter(PrinterRequest $request, $id)
     {
-        $printer = Printer::findOrFail($id);
-        $printer->update($request->all());
-        return redirect('option');
+        return $this->updateModel($request, $id, "App\Models\Printer");
     }
 
     public function updateCountry(CountryRequest $request, $id)
     {
-        $country = Country::findOrFail($id);
-        $country->update($request->all());
-        return redirect('option');
+        return $this->updateModel($request, $id, "App\Models\Country");
     }
 
     public function updateRepository(RepositoryRequest $request, $id)
     {
-        $repository = Repository::findOrFail($id);
-        $repository->update($request->all());
-        return redirect('option');
+        return $this->updateModel($request, $id, "App\Models\Repository");
     }
 
     /*
     * 削除
     */
+    private function destoryModel($id, $Model)
+    {
+        $Model::find($id)->delete();
+        return redirect()->back();
+    }
     public function destoryDesigner($id)
     {
-        Designer::find($id)->delete();
-        return redirect()->back();
+        return $this->destoryModel($id, "App\Models\Designer");
     }
 
     public function destoryPrinter($id)
     {
-        Printer::find($id)->delete();
-        return redirect()->back();
+        return $this->destoryModel($id, "App\Models\Printer");
     }
 
     public function destoryCountry($id)
     {
-        Country::find($id)->delete();
-        return redirect()->back();
+        return $this->destoryModel($id, "App\Models\Country");
     }
 
     public function destoryRepository($id)
     {
-        Repository::find($id)->delete();
-        return redirect()->back();
+        return $this->destoryModel($id, "App\Models\Repository");
     }
 
 
