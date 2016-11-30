@@ -3,14 +3,15 @@
 @section('content')
 
     <ul class="nav nav-tabs">
-    	<li><a href="#Designer" data-toggle="tab">Designer</a></li>
-    	<li class="active"><a href="#Printer" data-toggle="tab">Printer</a></li>
+    	<li class="active"><a href="#Designer" data-toggle="tab">Designer</a></li>
+    	<li><a href="#Printer" data-toggle="tab">Printer</a></li>
     	<li><a href="#Country" data-toggle="tab">Country</a></li>
     	<li><a href="#Repository" data-toggle="tab">Repository</a></li>
     </ul>
 
     <div class="tab-content">
-        <div class="tab-pane" id="Designer">
+        <div class="tab-pane active" id="Designer">
+            aa
             @include("option.list", ["title"=>"Designer", "datas"=>$designers, "url"=>"designer"])
         </div>
         <div class="tab-pane" id="Printer">
