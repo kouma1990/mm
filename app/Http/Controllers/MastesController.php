@@ -16,6 +16,8 @@ use App\Models\Country;
 use App\Models\Repository;
 use App\Http\Requests\MasteRequest;
 
+use Excel;
+
 class MastesController extends Controller
 {
     public function index()
@@ -74,5 +76,17 @@ class MastesController extends Controller
         $maste->delete();
         \Session::flash('flash_message', 'マステを削除しました。');
         return redirect('mastes');
+    }
+
+    public function excel()
+    {
+        //
+        $maste = Maste::all();
+
+        Excel::create('plants', function($excel) use($maste) {
+            $excel->sheet('Sheet 1', function($sheet) use($maste) {
+                $sheet->fromArray($maste);
+            });
+        })->export('xls');
     }
 }

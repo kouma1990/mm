@@ -5,6 +5,7 @@
     <title>Maste</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 </head>
 <body>
     <div class="container">
@@ -21,6 +22,7 @@
         				<li><a href="#">icon</a></li>
         				<li><a href="{{ url("mastes/create") }}">new</a></li>
                         <li><a href="{{ url("option") }}">option</a></li>
+                        <li><a href="{{ url("download-excel") }}">download</a></li>
         			</ul>
         		</div>
         	</div>

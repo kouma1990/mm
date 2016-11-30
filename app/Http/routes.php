@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// メイン画面
 Route::resource('mastes', 'MastesController');
 
 Route::get('test', 'TestController@index');
@@ -34,6 +35,8 @@ Route::patch("printer/{id}", "OptionController@updatePrinter");
 Route::patch("repository/{id}", "OptionController@updateRepository");
 Route::patch("country/{id}", "OptionController@updateCountry");
 
+// excel Test
+Route::get("download-excel", "MastesController@excel");
 
 /*
 Route::get('mastes', 'MastesController@index');
