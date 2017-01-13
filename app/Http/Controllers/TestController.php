@@ -18,7 +18,7 @@ class TestController extends Controller
     public function index()
     {
         Storage::put('images/text.txt', "text");
-        return "aa";
+        return "aa2";
     }
 
     /**
