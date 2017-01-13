@@ -32,30 +32,31 @@ class OptionController extends Controller
     /*
     * 新規作成
     */
-    private function storeModel($request, $Model)
+    private function storeModel($request, $Model, $type=1)
     {
-        $Model::create($request->all());
-        return redirect('option');
+        $model = $Model::create($request->all());
+        \Session::flash('flash_message', $model->name.'を追加しました。');
+        return redirect('option')->with("selected", $type);
     }
 
     public function storeDesigner(DesignerRequest $request)
     {
-        return $this->storeModel($request, "App\Models\Designer");
+        return $this->storeModel($request, "App\Models\Designer", 1);
     }
 
     public function storePrinter(PrinterRequest $request)
     {
-        return $this->storeModel($request, "App\Models\Printer");
+        return $this->storeModel($request, "App\Models\Printer", 2);
     }
 
     public function storeCountry(CountryRequest $request)
     {
-        return $this->storeModel($request, "App\Models\Country");
+        return $this->storeModel($request, "App\Models\Country", 3);
     }
 
     public function storeRepository(RepositoryRequest $request)
     {
-        return $this->storeModel($request, "App\Models\Repository");
+        return $this->storeModel($request, "App\Models\Repository", 4);
     }
 
     /*
@@ -93,9 +94,16 @@ class OptionController extends Controller
     */
     private function destoryModel($id, $Model)
     {
-        $Model::find($id)->delete();
+        $model = $Model::find($id);
+        if($model->Maste->count() > 0) {
+            return redirect()->back()->withErrors(array("test" => "利用しているマステが存在するため、".$model->name."は削除できませんでした。"));
+        } else {
+            \Session::flash('flash_message', $model->name.'を削除しました。');
+            $model->delete();
+        }
         return redirect()->back();
     }
+
     public function destoryDesigner($id)
     {
         return $this->destoryModel($id, "App\Models\Designer");

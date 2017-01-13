@@ -9,8 +9,8 @@ class Designer extends Model
     //
     protected $fillable = ['name'];
 
-    public function mastes()
+    public function Maste()
     {
-        return $this->hasMane('App\Models\Maste');
+        return $this->hasMany('App\Models\Maste');
     }
 }

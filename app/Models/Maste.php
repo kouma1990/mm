@@ -9,22 +9,22 @@ class Maste extends Model
     //
     protected $fillable = ['title', 'note', 'designer_id', 'printer_id', 'country_id', 'repository_id', 'price', 'number', 'number_open', 'trade_flag', 'limit_flag'];
 
-    public function designer()
+    public function Designer()
     {
-        return $this->belongsTo('App\\Models\Designer');
+        return $this->belongsTo('App\Models\Designer');
     }
 
-    public function printer()
+    public function Printer()
     {
         return $this->belongsTo('App\Models\Printer');
     }
 
-    public function country()
+    public function Country()
     {
         return $this->belongsTo('App\Models\Country');
     }
 
-    public function repository()
+    public function Repository()
     {
         return $this->belongsTo('App\Models\Repository');
     }

@@ -9,10 +9,10 @@
     <article>
         <div class="body">
             Note : {{ $maste->note }} <br>
-            Printer : {{ $maste->printer->name }} <br>
-            Designer : {{ $maste->designer->name }} <br>
-            Country : {{ $maste->country->name }} <br>
-            Repository : {{ $maste->repository->name }} <br>
+            Printer : {{ $maste->Printer->name }} <br>
+            Designer : {{ $maste->Designer->name }} <br>
+            Country : {{ $maste->Country->name }} <br>
+            Repository : {{ $maste->Repository->name }} <br>
             Price : {{ $maste->price }} <br>
             Number : {{ $maste->number }} <br>
             Number(opened) : {{ $maste->number_open }} <br>
