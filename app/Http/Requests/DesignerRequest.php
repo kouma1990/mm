@@ -26,7 +26,7 @@ class DesignerRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:designers',
+            'name' => 'required|unique:designers,name,NULL,user_id,user_id,'.\Auth::user()->id,
         ];
     }
 }

@@ -26,7 +26,7 @@ class PrinterRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:printers',
+            'name' => 'required|unique:printers,name,NULL,user_id,user_id,'.\Auth::user()->id,
         ];
     }
 }

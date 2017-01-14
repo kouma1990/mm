@@ -26,7 +26,7 @@ class CountryRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:countries',
+            'name' => 'required|unique:countries,name,NULL,user_id,user_id,'.\Auth::user()->id,
         ];
     }
 }

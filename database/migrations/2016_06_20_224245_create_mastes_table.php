@@ -25,14 +25,6 @@ class CreateMastesTable extends Migration
             $table->integer('purchased_month')->unsigned();
             $table->integer('purchased_day')->unsigned();
 
-            /*
-            $table->string('theme');
-            $table->string('color');
-
-
-
-            */
-
             $table->integer('price');
             $table->integer('number');
             $table->integer('number_open');
@@ -41,8 +33,9 @@ class CreateMastesTable extends Migration
             $table->boolean('limit_flag');
 
             $table->string('note');
-            $table->timestamps();
 
+            $table->integer('user_id')->unsigned();
+            $table->timestamps();
         });
     }
 

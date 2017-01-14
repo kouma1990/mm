@@ -15,6 +15,7 @@ class CreatePrintersTable extends Migration
         Schema::create('printers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
 

@@ -2,8 +2,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Maste</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
@@ -14,11 +16,7 @@
         <nav class="navbar navbar-default">
         	<div class="container-fluid">
         		<div class="navbar-header">
-                    @if (Auth::guest())
-                        <a class="navbar-brand" href="/auth/login">maste</a>
-                    @else
-                        <a class="navbar-brand" href="{{ url("mastes") }}">maste</a>
-                    @endif
+                    <a class="navbar-brand" href="{{ url("mastes") }}">maste</a>
         		</div>
 
         		<div class="collapse navbar-collapse" id="navbarEexample1">
@@ -26,7 +24,6 @@
         			<ul class="nav navbar-nav">
         				<li><a href="{{ url("mastes") }}">list</a></li>
         				<li><a href="#">icon</a></li>
-        				<li><a href="{{ url("mastes/create") }}">new</a></li>
                         <li><a href="{{ url("option") }}">option</a></li>
                         <li><a href="{{ url("download-excel") }}">download</a></li>
         			</ul>

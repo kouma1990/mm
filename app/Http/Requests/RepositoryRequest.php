@@ -26,7 +26,7 @@ class RepositoryRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:repositories',
+            'name' => 'required|unique:repositories,name,NULL,user_id,user_id,'.\Auth::user()->id,
         ];
     }
 }

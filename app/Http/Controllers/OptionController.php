@@ -21,10 +21,10 @@ class OptionController extends Controller
 {
     public function index()
     {
-        $designers = Designer::get();
-        $printers = Printer::get();
-        $countries = Country::get();
-        $repositories = Repository::get();
+        $designers = \Auth::user()->Designer;
+        $printers = \Auth::user()->Printer;
+        $countries = \Auth::user()->Country;
+        $repositories = \Auth::user()->Repository;
 
         return view('option.index', compact("designers", "printers", "countries", "repositories"));
     }
@@ -34,7 +34,10 @@ class OptionController extends Controller
     */
     private function storeModel($request, $Model, $type=1)
     {
-        $model = $Model::create($request->all());
+        $model = $Model::create([
+            "user_id"=>\Auth::user()->id,
+            "name"=>$request->input("name"),
+        ]);
         \Session::flash('flash_message', $model->name.'を追加しました。');
         return redirect('option')->with("selected", $type);
     }
@@ -66,6 +69,7 @@ class OptionController extends Controller
     {
         $model = $Model::findOrFail($id);
         $model->update($request->all());
+        \Session::flash('flash_message', '編集しました。');
         return redirect('option');
     }
 

@@ -15,6 +15,7 @@ class CreateDesignersTable extends Migration
         Schema::create('designers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
 

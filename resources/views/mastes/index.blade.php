@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    <a class="btn btn-default" href="{{ url("mastes/create") }}" role="button">new</a>
     <table class="table">
     	<thead>
     		<tr>

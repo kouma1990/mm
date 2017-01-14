@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Maste extends Model
 {
     //
-    protected $fillable = ['title', 'note', 'designer_id', 'printer_id', 'country_id', 'repository_id', 'price', 'number', 'number_open', 'trade_flag', 'limit_flag'];
+    protected $fillable = ['title', 'note', 'designer_id', 'printer_id', 'country_id', 'repository_id',
+                           'price', 'number', 'number_open', 'trade_flag', 'limit_flag', 'user_id'];
 
     public function Designer()
     {
@@ -27,6 +28,11 @@ class Maste extends Model
     public function Repository()
     {
         return $this->belongsTo('App\Models\Repository');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo('App\User');
     }
 
     //protected $dates = ['published_at'];
